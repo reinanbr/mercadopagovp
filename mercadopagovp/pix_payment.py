@@ -5,7 +5,7 @@
 # It contains the payment details such as the ID, amount, QR code, description, currency ID, last updated date, ticket URL, start date, expiration date, status code, payment status, and time to expiration.
 
 from dataclasses import dataclass
-
+from mercadopagovp.load_sdk import LoadSDK
 
 @dataclass
 class PixPayment:
@@ -23,6 +23,7 @@ class PixPayment:
     status_code: str
     status_payment: str
     time_to_end: int
+    sdk:LoadSDK
     
     def __str__(self):
         """Returns a string representation of the payment details."""

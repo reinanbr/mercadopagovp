@@ -15,15 +15,11 @@ pip install mercadopagovp
 
 * Python 3.9+
 * MercadoPago account
-* `.env` file with a valid MercadoPago token under the key `TOKEN`
+* MercadoPago API key
 
 ## Configuration
 
-Create a `.env` file in your project root and add:
-
-```
-TOKEN=your_mercadopago_token_here
-```
+To use the library, you need a valid MercadoPago API key.
 
 ## Usage
 
@@ -32,15 +28,24 @@ TOKEN=your_mercadopago_token_here
 ```python
 from mercadopagovp import CreatePixPayment
 
+# Define the API key
+KEY_SDK = "your_mercadopago_api_key"
+
 # Initialize the payment instance
-pix = CreatePixPayment("https://your-domain.com/notification")
+pix = CreatePixPayment(KEY_SDK)
 
-# Set payment details
+# Set notification URL
+pix.set_url_notification('https://your-domain.com/notification')
+
+# Set payment value
 pix.set_value(2.00)
-pix.create_client('John', 'Doe', email="johndoe@example.com")
 
-# Create payment
+# Create a client
+pix.create_client('First Name', 'Last Name', email="email@example.com")
+
+# Create the payment
 payment = pix.create_payment('Test Payment')
+
 print("Payment Details:")
 print(payment)
 ```
@@ -69,9 +74,12 @@ PixPayment(
 ```python
 from mercadopagovp import VerifyPixPayment
 
+# Initialize the verification instance
+verify = VerifyPixPayment(KEY_SDK)
+
 # Verify the payment status
-verify = VerifyPixPayment(payment.id)
-status = verify.verify_payment()
+status = verify.verify_payment(payment_id=payment.id)
+
 print("Payment Status:")
 print(status)
 ```

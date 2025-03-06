@@ -16,19 +16,31 @@ from mercadopagovp.pix_payment import PixPayment
 class CreatePixPayment:
     """Class responsible for creating PIX payments on MercadoPago."""
     
-    def __init__(self, notification_url: str = None):
+    def __init__(self, key_sdk: str|bool=None):
         """
         Initializes the CreatePixPayment class.
 
         Args:
             notification_url (str, optional): Notification URL for the payment.
         """
-        self.sdk = LoadSDK().get_sdk()
-        self.notification_url = notification_url
+        if key_sdk:
+            self.sdk = LoadSDK(key_sdk=key_sdk).get_sdk()
+        else:
+            self.sdk = LoadSDK().get_sdk()
+        self.notification_url = None
         self.first_name = None
         self.last_name = None
         self.value = None
         self.email = None
+        
+    def set_url_notification(self, notification_url: str) -> None:
+        """
+        Sets the notification URL for the payment.
+
+        Args:
+            notification_url (str): Notification URL.
+        """
+        self.notification_url = notification_url
     
     def set_value(self, value: float) -> None:
         """
@@ -100,7 +112,8 @@ class CreatePixPayment:
                 date_end=payment_pix['response']['date_of_expiration'],
                 status_code=payment_pix['response']['status'],
                 status_payment=payment_pix['response']['status_detail'],
-                time_to_end=delta_time
+                time_to_end=delta_time,
+                sdk=self.sdk
             )
         except Exception as e:
             print(f"Error creating payment: {e}")

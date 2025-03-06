@@ -16,17 +16,16 @@ from mercadopagovp.pix_payment import PixPayment
 class VerifyPixPayment:
     """Class responsible for verifying the status of a PIX payment."""
     
-    def __init__(self, payment_id: str):
+    def __init__(self,key_sdk: str|bool=None):
         """
         Initializes the VerifyPixPayment class.
 
         Args:
             payment_id (str): ID of the payment to be verified.
         """
-        self.sdk = LoadSDK().get_sdk()
-        self.payment_id = payment_id
+        self.sdk = LoadSDK(key_sdk=key_sdk).get_sdk()
     
-    def verify_payment(self) -> PixPayment:
+    def verify_payment(self,payment_id) -> PixPayment:
         """
         Verifies the status of a PIX payment.
 
@@ -34,7 +33,7 @@ class VerifyPixPayment:
             PixPayment: Object representing the verified payment.
         """
         request = mercadopago.config.RequestOptions()
-        payment_response = self.sdk.payment().get(self.payment_id, request)
+        payment_response = self.sdk.payment().get(payment_id, request)
         date_expiration = datetime.fromisoformat(payment_response['response']['date_of_expiration'])
         date_created = datetime.fromisoformat(payment_response['response']['date_created'])
         delta_time = (date_expiration - date_created).total_seconds()
@@ -50,5 +49,6 @@ class VerifyPixPayment:
             date_end=payment_response['response']['date_of_expiration'],
             status_code=payment_response['response']['status'],
             status_payment=payment_response['response']['status_detail'],
-            time_to_end=delta_time
+            time_to_end=delta_time,
+            sdk=self.sdk
         )
