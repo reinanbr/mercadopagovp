@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pix-plugin-mp-py"
+version = "0.3.7"
+description = ""
+authors = ["reinanbr <perseu912@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+kitano = "^0.0.8.5"
+requests = "^2.32.3"
+pillow = "^11.1.0"
+qrcode = "^8.0"
+mercadopago = "^2.2.3"
+dotenv = "^0.9.9"
+setuptools = "^75.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
