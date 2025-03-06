@@ -13,15 +13,6 @@ from mercadopagovp.pix_payment import PixPayment
 
 
 
-
-
-
-
-
-
-
-
-
 class VerifyPixPayment:
     """Class responsible for verifying the status of a PIX payment."""
     

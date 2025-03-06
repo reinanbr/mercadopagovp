@@ -13,8 +13,6 @@ from mercadopagovp.pix_payment import PixPayment
 
 
 
-
-
 class CreatePixPayment:
     """Class responsible for creating PIX payments on MercadoPago."""
     

@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 from mercadopagovp.error.error_token import ErrorTokenValue
 
 
-
-
 class LoadSDK:
     """Class responsible for loading the MercadoPago SDK."""
     
