@@ -10,7 +10,7 @@ from datetime import datetime
 from mercadopagovp.load_sdk import LoadSDK
 from dataclasses import dataclass
 from mercadopagovp.pix_payment import PixPayment
-
+import pytz
 
 
 class VerifyPixPayment:
@@ -36,7 +36,8 @@ class VerifyPixPayment:
         payment_response = self.sdk.payment().get(payment_id, request)
         date_expiration = datetime.fromisoformat(payment_response['response']['date_of_expiration'])
         date_created = datetime.fromisoformat(payment_response['response']['date_created'])
-        delta_time = (date_expiration - date_created).total_seconds()
+        date_now = datetime.now(pytz.timezone("America/Sao_Paulo"))
+        delta_time = int((date_expiration - date_now).total_seconds())
         return PixPayment(
             id=payment_response['response']['id'],
             amount=payment_response['response']['transaction_amount'],

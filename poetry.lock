@@ -283,6 +283,17 @@ files = [
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "pytz"
+version = "2025.2"
+description = "World timezone definitions, modern and historical"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pytz-2025.2-py2.py3-none-any.whl", hash = "sha256:5ddf76296dd8c44c26eb8f4b6f35488f3ccbf6fbbd7adee0b7262d43f0ec2f00"},
+    {file = "pytz-2025.2.tar.gz", hash = "sha256:360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3"},
+]
+
+[[package]]
 name = "qrcode"
 version = "8.0"
 description = "QR Code image generator"
@@ -362,4 +373,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "3a6db7f08732d948b73a577f107e73a9ae3050da0a5e93f073bd8e3369c96bc6"
+content-hash = "d4366271b8ffd6b200c2d7cde4b5e5d9d4b53714ae0d83160853fb15363922cd"

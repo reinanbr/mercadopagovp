@@ -1,4 +1,3 @@
-
 # Mercadopagovp
 
 ## Overview
@@ -37,6 +36,9 @@ pix = CreatePixPayment(KEY_SDK)
 # Set notification URL
 pix.set_url_notification('https://your-domain.com/notification')
 
+#set time to expiration (in minutes)
+pix.set_time_limit(10)
+
 # Set payment value
 pix.set_value(2.00)
 
@@ -53,20 +55,20 @@ print(payment)
 #### Expected Response (PixPayment Dataclass)
 
 ```python
-PixPayment(
-    id='1234567890',
-    amount=2.00,
-    qr_code='qrcode_data_here',
-    description='Test Payment',
-    currency_id='BRL',
-    date_last_updated='2025-03-07T11:12:37.435-04:00',
-    ticket_url='https://payment.url',
-    date_init='2025-03-07T11:11:37.435-04:00',
-    date_end='2025-03-07T11:41:37.435-04:00',
-    status_code='pending',
-    status_payment='waiting for payment',
-    time_to_end=1800
-)
+status 
+Payment Details:
+ID: 108412339053
+Amount: 2
+QR Code: 00020126400014br.gov.bcb.pix0118devpy912@gmail.com52040000530398654042.005802BR5918BERE202405190802466009Sao Paulo62250521mpqrinter108412339053630466AA
+Description: Pagamento de teste
+Currency ID: BRL
+Last Updated: 2025-04-18T20:05:23.000-04:00
+Ticket URL: None
+Start Date: 2025-04-18T20:05:20.000-04:00
+Expiration Date: 2025-04-18T20:15:19.000-04:00
+Status Code: pending
+Payment Status: pending_waiting_transfer
+Time to Expiration: 304 seconds
 ```
 
 ### Verifying a PIX Payment
@@ -87,20 +89,20 @@ print(status)
 #### Expected Response (PixPayment Dataclass)
 
 ```python
-PixPayment(
-    id='1234567890',
-    amount=2.00,
-    qr_code='qrcode_data_here',
-    description='Test Payment',
-    currency_id='BRL',
-    date_last_updated='2025-03-07T11:42:37.435-04:00',
-    ticket_url='https://payment.url',
-    date_init='2025-03-07T11:11:37.435-04:00',
-    date_end='2025-03-07T11:41:37.435-04:00',
-    status_code='approved',
-    status_payment='payment received',
-    time_to_end=0
-)
+status 
+Payment Details:
+ID: 108412339053
+Amount: 2
+QR Code: 00020126400014br.gov.bcb.pix0118devpy912@gmail.com52040000530398654042.005802BR5918BERE202405190802466009Sao Paulo62250521mpqrinter108412339053630466AA
+Description: Pagamento de teste
+Currency ID: BRL
+Last Updated: 2025-04-18T20:05:23.000-04:00
+Ticket URL: None
+Start Date: 2025-04-18T20:05:20.000-04:00
+Expiration Date: 2025-04-18T20:15:19.000-04:00
+Status Code: pending
+Payment Status: pending_waiting_transfer
+Time to Expiration: 304 seconds
 ```
 
 ## License
