@@ -12,7 +12,10 @@ pix = CreatePixPayment(KEY_SDK)
 pix.set_url_notification('https://test.com')
 pix.set_time_limit(10)
 pix.set_value(2.00)
-pix.create_client('reinan', 'reysofts',email="slimchatuba@gmail.com")
+pix.set_firtname('reinan')
+pix.set_lastname('reysofts')
+pix.set_email("slimchatuba@gmail.com")
+
 payment = pix.create_payment('Pagamento de teste')
 
 print("res", payment)

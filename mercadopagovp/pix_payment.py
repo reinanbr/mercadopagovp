@@ -14,7 +14,9 @@ class PixPayment:
     id: str
     amount: float
     qr_code: str
+    qr_code_base64: str
     description: str
+    payment_method: str
     currency_id: str
     date_last_updated: str
     ticket_url: str
@@ -31,6 +33,7 @@ class PixPayment:
                 f"ID: {self.id}\n"
                 f"Amount: {self.amount}\n"
                 f"QR Code: {self.qr_code}\n"
+                f"QR Code Base64: {self.qr_code_base64}\n"
                 f"Description: {self.description}\n"
                 f"Currency ID: {self.currency_id}\n"
                 f"Last Updated: {self.date_last_updated}\n"
@@ -38,5 +41,6 @@ class PixPayment:
                 f"Start Date: {self.date_init}\n"
                 f"Expiration Date: {self.date_end}\n"
                 f"Status Code: {self.status_code}\n"
+                f"Payment Method: {self.payment_method}\n"
                 f"Payment Status: {self.status_payment}\n"
                 f"Time to Expiration: {self.time_to_end} seconds")
