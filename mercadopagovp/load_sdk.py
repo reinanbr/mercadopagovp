@@ -1,7 +1,7 @@
 import mercadopago
 import os
 from dotenv import load_dotenv
-from mercadopagovp.error.error_token import ErrorTokenValue
+
 from kitano import puts
 
 class LoadSDK:
@@ -26,8 +26,7 @@ class LoadSDK:
             load_dotenv()
             self.sdk_main = os.getenv(key_env)
             if not self.sdk_main:
-                raise ErrorTokenValue("Invalid or missing MercadoPago token.")
-        
+                raise puts("Invalid or missing MercadoPago token.")
             self.sdk = mercadopago.SDK(access_token=self.sdk_main)
             print('Success: Token loaded!')
     

@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as fh:
 
 setup(
     name="mercadopagovp",
-    version="0.4.1",
+    version="0.4.2",
     url="https://github.com/reinanbr/pix_plugin_mp_py",
     license="MIT",
     author="Reinan Br",
@@ -20,7 +20,8 @@ setup(
         "python-dotenv",
         "qrcode",
         "pillow",
-        "requests"
+        "requests",
+        "kitano"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
