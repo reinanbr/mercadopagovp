@@ -48,4 +48,4 @@ class PixPayment:
                 f"Status Code: {self.status_code}\n"
                 f"Payment Method: {self.payment_method}\n"
                 f"Payment Status: {self.status_payment}\n"
-                f"Time to Expiration: {self.time_to_end} seconds")
+                f"Time to Expiration: {self.time_to_end} Seconds")
