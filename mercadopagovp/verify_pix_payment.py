@@ -53,6 +53,7 @@ class VerifyPixPayment:
             status_code=payment_response['response']['status'],
             status_payment=payment_response['response']['status_detail'],
             ticket_url=payment_response['response']['point_of_interaction']['transaction_data']['ticket_url'],
+            link_notification=payment_response['response']["notification_url"],
             time_to_end=delta_time,
             sdk=self.sdk
         )

@@ -150,6 +150,7 @@ class CreatePixPayment:
                 currency_id=response['currency_id'],
                 date_last_updated=response['date_last_updated'],
                 ticket_url=response['transaction_details']['external_resource_url'],
+                link_notification=response["notification_url"],
                 date_init=response['date_created'],
                 date_end=response['date_of_expiration'],
                 status_code=response['status'],

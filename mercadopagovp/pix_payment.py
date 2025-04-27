@@ -25,6 +25,7 @@ class PixPayment:
     date_end: str
     status_code: str
     status_payment: str
+    link_notification: str
     time_to_end: int
     sdk:LoadSDK
     
@@ -40,6 +41,7 @@ class PixPayment:
                 f"Description: {self.description}\n"
                 f"Currency ID: {self.currency_id}\n"
                 f"Last Updated: {self.date_last_updated}\n"
+                f"Notification URL: {self.link_notification}\n"
                 f"Ticket URL: {self.ticket_url}\n"
                 f"Start Date: {self.date_init}\n"
                 f"Expiration Date: {self.date_end}\n"
