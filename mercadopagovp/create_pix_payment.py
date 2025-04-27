@@ -68,7 +68,7 @@ class CreatePixPayment:
         puts(f"Expiration time limit set: {self.date_limit}")
         
 
-    def set_fisrtname(self, firstname):
+    def set_firstname(self, firstname):
         """
         Sets the first name of the client.
         Args:
