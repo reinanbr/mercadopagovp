@@ -141,6 +141,7 @@ class CreatePixPayment:
 
             return PixPayment(
                 id=response['id'],
+                id_execution=response["charges_execution_info"]['internal_execution']['execution_id'],
                 amount=response['transaction_amount'],
                 qr_code=response['point_of_interaction']['transaction_data']['qr_code'],
                 qr_code_base64=response['point_of_interaction']['transaction_data']['qr_code_base64'],

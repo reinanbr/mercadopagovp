@@ -12,6 +12,7 @@ class PixPayment:
     """Class representing a PIX payment."""
     
     id: str
+    id_execution: str
     amount: float
     qr_code: str
     qr_code_base64: str
@@ -30,7 +31,9 @@ class PixPayment:
     def __str__(self):
         """Returns a string representation of the payment details."""
         return (f"\nPayment Details:\n"
+                f"Description: {self.description}\n"
                 f"ID: {self.id}\n"
+                f"ID Execution: {self.id_execution}\n"
                 f"Amount: {self.amount}\n"
                 f"QR Code: {self.qr_code}\n"
                 f"QR Code Base64: {self.qr_code_base64}\n"
