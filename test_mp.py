@@ -7,7 +7,7 @@ load_dotenv()
 # Get the MercadoPago token from environment variables
 # If you don't want to use dotenv, you can set the key directly here
 KEY_SDK = os.getenv('TOKEN')
-print(KEY_SDK)
+
 pix = CreatePixPayment(KEY_SDK)
 pix.set_url_notification('https://test.com')
 pix.set_time_limit(10)

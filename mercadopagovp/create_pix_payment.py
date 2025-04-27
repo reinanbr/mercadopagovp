@@ -51,7 +51,7 @@ class CreatePixPayment:
         if value < 2.00:
             raise ValueError("The minimum allowed amount is R$2.00.")
         self.value = value
-        puts(f"Payment value set: {value}")
+        #puts(f"Payment value set: {value}")
 
     def set_time_limit(self, minutes: int) -> None:
         """
@@ -65,7 +65,7 @@ class CreatePixPayment:
         offset = expiration_time.strftime('%z')
         offset_formatted = f"{offset[:3]}:{offset[3:]}"
         self.date_limit = expiration_time.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + offset_formatted
-        puts(f"Expiration time limit set: {self.date_limit}")
+        #puts(f"Expiration time limit set: {self.date_limit}")
         
 
     def set_firstname(self, firstname):
@@ -75,7 +75,7 @@ class CreatePixPayment:
             firstname (str): First name of the client.
         """
         self.first_name = firstname
-        puts(f"Client first name set: {firstname}")
+        #puts(f"Client first name set: {firstname}")
         
         
     def set_lastname(self, lastname):
@@ -85,7 +85,7 @@ class CreatePixPayment:
             lastname (str): Last name of the client.
         """
         self.last_name = lastname
-        puts(f"Client last name set: {lastname}")
+        #puts(f"Client last name set: {lastname}")
         
         
     def set_email(self, email):
@@ -95,7 +95,7 @@ class CreatePixPayment:
             email (str): Email of the client.
         """
         self.email = email
-        puts(f"Client email set: {email}")
+        #puts(f"Client email set: {email}")
 
 
     def create_payment(self, description: str) -> PixPayment:
@@ -126,18 +126,18 @@ class CreatePixPayment:
             "notification_url": self.notification_url,
             "date_of_expiration": self.date_limit,
         }
-        puts(f"Payment data:\n{data}")
+        #puts(f"Payment data:\n{data}")
 
         try:
             puts("Creating payment...")
             request_options = mercadopago.config.RequestOptions()
             payment_pix = self.sdk.payment().create(data, request_options)
-            puts(f"Payment created: {payment_pix}")
 
             response = payment_pix['response']
             date_expiration = datetime.fromisoformat(response['date_of_expiration'])
             date_now = datetime.now(pytz.timezone("America/Sao_Paulo"))
             delta_time = (date_expiration - date_now).total_seconds()
+            puts(f"Payment created successfully. ID: {response['id']}")
 
             return PixPayment(
                 id=response['id'],

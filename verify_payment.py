@@ -9,5 +9,5 @@ load_dotenv()
 KEY_SDK = os.getenv('TOKEN')
 
 verify = VerifyPixPayment(KEY_SDK)
-status = verify.verify_payment(payment_id="109180355577")
+status = verify.verify_payment(payment_id="109635070206")
 print("status", status)
